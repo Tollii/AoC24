@@ -1,10 +1,11 @@
-﻿namespace CSharp;
+﻿using System;
+
+namespace CSharp;
 
 class Program
 {
     static void Main(string[] args)
     {
-        // Test
         Console.WriteLine("Hello, World!");
     }
 }
