@@ -12,7 +12,7 @@ module SimilarityScoreProcessor =
                        
         leftIds
         |> Seq.map (fun leftId -> (leftId, locationIds
-                                         |> Seq.map _.Right
-                                         |> Seq.filter (fun rightId -> leftId = rightId)
-                                         |> Seq.length))
+                                           |> Seq.map _.Right
+                                           |> Seq.filter (fun rightId -> leftId = rightId)
+                                           |> Seq.length))
         |> Seq.sumBy (fun (leftId, count) -> calculateSimilarityScore leftId count)
