@@ -55,7 +55,7 @@ public static class DayOne
 
     private static IEnumerable<LocationPair> ReadAndProcessInput() 
         => File
-            .ReadLines("DayOne/input_1.txt")
+            .ReadLines("DayOne/1.input")
             .Select(line => MultiSpaceRegex.Split(line))
             .Select(parts => new LocationPair(int.Parse(parts[0]), int.Parse(parts[1])));
 }

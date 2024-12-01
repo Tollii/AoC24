@@ -8,7 +8,7 @@ module DayOne =
     let run =
         printfn "Day One"
         
-        let input = readAndProcessInput "input_1.txt"
+        let input = readAndProcessInput "1.input"
         
         let totalDistance = calculateTotalDistance input
         let similarityScore = calculateSimilarityScore input

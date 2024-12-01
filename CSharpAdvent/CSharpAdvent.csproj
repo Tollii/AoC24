@@ -8,9 +8,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <AdditionalFiles Include="Day*\*.txt">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </AdditionalFiles>
+        <AdditionalFiles Include="Day*\*.test">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </AdditionalFiles>
+        <AdditionalFiles Include="Day*\*.input">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </AdditionalFiles>
     </ItemGroup>
 
 </Project>

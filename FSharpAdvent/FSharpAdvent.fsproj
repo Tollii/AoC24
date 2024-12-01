@@ -6,7 +6,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ContentWithTargetPath Include="Day*\*.txt">
+        <ContentWithTargetPath Include="Day*\*.test">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>%(Filename)%(Extension)</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="Day*\*.input">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <TargetPath>%(Filename)%(Extension)</TargetPath>
         </ContentWithTargetPath>
