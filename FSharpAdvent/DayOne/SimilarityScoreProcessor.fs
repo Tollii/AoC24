@@ -1,6 +1,6 @@
 module FSharpAdvent.DayOne.SimilarityScoreProcessor
 
-open FSharpAdvent.DayOne.InputProcessor.InputProcessor
+open FSharpAdvent.DayOne.LocationIdPairModule
 
 module SimilarityScoreProcessor =
     

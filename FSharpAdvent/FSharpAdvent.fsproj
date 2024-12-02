@@ -6,6 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="DayOne\LocationIdPairModule.fs" />
+        <Compile Include="Util\InputProcessor.fs" />
         <ContentWithTargetPath Include="Day*\*.test">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <TargetPath>%(Filename)%(Extension)</TargetPath>
@@ -14,10 +16,10 @@
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <TargetPath>%(Filename)%(Extension)</TargetPath>
         </ContentWithTargetPath>
-        <Compile Include="DayOne\InputProcessor.fs" />
         <Compile Include="DayOne\DistanceProcessor.fs" />
         <Compile Include="DayOne\SimilarityScoreProcessor.fs" />
         <Compile Include="DayOne\DayOne.fs" />
+        <Compile Include="DayTwo\DayTwo.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
     

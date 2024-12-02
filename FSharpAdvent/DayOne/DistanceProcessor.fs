@@ -1,7 +1,7 @@
 module FSharpAdvent.DayOne.DistanceProcessor
 
 open System
-open FSharpAdvent.DayOne.InputProcessor.InputProcessor
+open FSharpAdvent.DayOne.LocationIdPairModule
 
 module DistanceProcessor =
 
