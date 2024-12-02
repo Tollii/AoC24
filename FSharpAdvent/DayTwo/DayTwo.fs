@@ -8,18 +8,18 @@ module DayTwo =
     let run =
         printfn "Day Two"
         
-        let input = InputProcessor.readAndParseInput "2.input" toReport
+        let reports = InputProcessor.readAndParseInput "2.test" fromPartsToReport |> List.ofSeq
         
-        let part1 =
-            input
-            |> Seq.filter isValid
-            |> Seq.length
+        let safeReportsCount =
+            reports
+            |> List.filter isSafe
+            |> List.length
         
-        printfn $"Number of valid reports: {part1}"
+        let safeErrorReportsWithToleranceCount =
+            reports
+            |> List.filter (fun report -> isSafe report || canBeMadeSafe report)
+            |> List.length
         
-        let part2 =
-            input
-            |> Seq.filter isValidWithProblemDampener
-            |> Seq.length
+        printfn $"Number of safe reports: {safeReportsCount}"
+        printfn $"Number of safe reports with one error tolerance: {safeErrorReportsWithToleranceCount}"
         
-        printfn $"Number of valid reports with one error allowed: {part2}"

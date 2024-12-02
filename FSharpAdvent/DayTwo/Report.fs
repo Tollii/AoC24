@@ -3,52 +3,34 @@ namespace FSharpAdvent.DayTwo
 module ReportModule =
 
     type Report = {
-        Levels: int seq
+        Levels: int list
     }
     
-    type LevelDirection =
-        | Increment 
-        | Decrement
-    
-    let toReport (parts: string seq) = {
-        Levels = parts |> Seq.map int
+    let fromPartsToReport (parts: string seq) = {
+        Levels = parts |> List.ofSeq |> List.map int
     }
     
-    let private isWithinDiffLimit previous current = abs (previous - current) <= 3 && abs (previous - current) >= 1
-    let private incrementValidator (previous, current) = previous < current && isWithinDiffLimit previous current
-    let private decrementValidator (previous, current) = previous > current && isWithinDiffLimit previous current
-    let private direction (pairs: (int * int) list) = if incrementValidator pairs.Head then Increment else Decrement
-    let private areLevelsValidIncr (levels: int list) = levels|> List.pairwise|> List.forall incrementValidator
-    let private areLevelsValidDecr (levels: int list) = levels|> List.pairwise|> List.forall decrementValidator
+    let fromLevelsToReport (levels: int list) = {
+        Levels = levels
+    }
     
-    let private areLevelsValid (levels: int list) =
-        let pairs = List.pairwise levels
-        let isValidIncreasing = List.forall incrementValidator pairs
-        let isValidDecreasing = List.forall decrementValidator pairs
-        isValidIncreasing || isValidDecreasing
+    let isSafe (report: Report) =
+        if List.length report.Levels < 2 then
+            true
+        else
+            let diffs = List.pairwise report.Levels |> List.map (fun (a, b) -> b - a)
+            let allPositive = List.forall ((<) 0) diffs
+            let allNegative = List.forall ((>) 0) diffs
+            let diffsInRange = List.forall (fun d -> abs d >= 1 && abs d <= 3) diffs
+            let noZeroDiffs = List.forall ((<>) 0) diffs
+            (allPositive || allNegative) && diffsInRange && noZeroDiffs
             
-    let private areLevelsValidWithOneError (levels: int list) =
-        let removeCurrentLevel pairwise = 
-            match pairwise with
-            | [] -> []
-            | (first, second) :: tail ->
-                printfn $"Removing {first}, next element is {second}"
-                second :: (List.map snd tail)
-            
-        let pairs = List.pairwise levels
-        match direction pairs with
-        | Increment -> 
-            pairs
-            |> List.skipWhile incrementValidator
-            |> removeCurrentLevel
-            |> areLevelsValid
-        | Decrement ->
-            pairs
-            |> List.skipWhile decrementValidator
-            |> removeCurrentLevel
-            |> areLevelsValid
-    let isValid (report: Report) =
-        areLevelsValid (report.Levels |> List.ofSeq)
-        
-    let isValidWithProblemDampener (report: Report) =
-        areLevelsValidWithOneError (report.Levels |> List.ofSeq)
+    
+    let canBeMadeSafe (report: Report) =
+        let len = List.length report.Levels
+        let indices = [0..len-1]
+        indices
+        |> List.exists (fun idx ->
+            let modifiedReport = fromLevelsToReport (List.take idx report.Levels @ List.skip (idx + 1) report.Levels)
+            isSafe modifiedReport
+        )
