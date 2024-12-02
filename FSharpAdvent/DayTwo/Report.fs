@@ -19,11 +19,10 @@ module ReportModule =
             true
         else
             let diffs = List.pairwise report.Levels |> List.map (fun (a, b) -> b - a)
-            let allPositive = List.forall ((<) 0) diffs
-            let allNegative = List.forall ((>) 0) diffs
+            let isIncrementing = List.forall ((<) 0) diffs
+            let isDecrementing = List.forall ((>) 0) diffs
             let diffsInRange = List.forall (fun d -> abs d >= 1 && abs d <= 3) diffs
-            (allPositive || allNegative) && diffsInRange
-            
+            (isIncrementing || isDecrementing) && diffsInRange
     
     let canBeMadeSafe (report: Report) =
         let len = List.length report.Levels
