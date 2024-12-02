@@ -22,8 +22,7 @@ module ReportModule =
             let allPositive = List.forall ((<) 0) diffs
             let allNegative = List.forall ((>) 0) diffs
             let diffsInRange = List.forall (fun d -> abs d >= 1 && abs d <= 3) diffs
-            let noZeroDiffs = List.forall ((<>) 0) diffs
-            (allPositive || allNegative) && diffsInRange && noZeroDiffs
+            (allPositive || allNegative) && diffsInRange
             
     
     let canBeMadeSafe (report: Report) =
