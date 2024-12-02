@@ -8,7 +8,7 @@ module DayTwo =
     let run =
         printfn "Day Two"
         
-        let reports = InputProcessor.readAndParseInput "2.test" fromPartsToReport |> List.ofSeq
+        let reports = InputProcessor.readAndParseInput "2.input" fromPartsToReport |> List.ofSeq
         
         let safeReportsCount =
             reports
