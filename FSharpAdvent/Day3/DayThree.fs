@@ -24,8 +24,7 @@ module DayThree =
         
         let part1 = Regex.Matches(input, @"mul\((\d{1,3}),(\d{1,3})\)")
                     |> Seq.map toMul
-                    |> Seq.map multiply
-                    |> Seq.sum
+                    |> Seq.sumBy multiply
         
         let part2 = Regex.Matches(input, @"mul\((\d{1,3}),(\d{1,3})\)|don't\(\)|do\(\)")
                     |> Seq.fold (fun (acc, skip) m ->
@@ -38,8 +37,7 @@ module DayThree =
                         ([], false)
                     |> fst
                     |> Seq.map toMul
-                    |> Seq.map multiply
-                    |> Seq.sum
+                    |> Seq.sumBy multiply
         
         printfn $"Part 1 sum is {part1}"
         printfn $"Part 2 sum is {part2}"
