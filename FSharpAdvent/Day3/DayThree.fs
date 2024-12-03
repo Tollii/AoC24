@@ -5,17 +5,8 @@ open System.Text.RegularExpressions
 
     
 module DayThree =
-    type Mul = {
-        A: int
-        B: int
-    }
-    
-    let toMul (m: Match) = {
-        A = int m.Groups.[1].Value
-        B = int m.Groups.[2].Value
-    }
-    
-    let multiply (m: Mul) = m.A * m.B
+    let toTuple (m: Match) = struct (int m.Groups.[1].Value, int m.Groups.[2].Value)
+    let multiply struct (first, second) = first * second
     
     let run =
         printfn "Day Three"
@@ -23,7 +14,7 @@ module DayThree =
         let input = File.ReadAllText "3.input"
         
         let part1 = Regex.Matches(input, @"mul\((\d{1,3}),(\d{1,3})\)")
-                    |> Seq.map toMul
+                    |> Seq.map toTuple
                     |> Seq.sumBy multiply
         
         let part2 = Regex.Matches(input, @"mul\((\d{1,3}),(\d{1,3})\)|don't\(\)|do\(\)")
@@ -36,7 +27,7 @@ module DayThree =
                         | _ -> (acc, skip))
                         ([], false)
                     |> fst
-                    |> Seq.map toMul
+                    |> Seq.map toTuple
                     |> Seq.sumBy multiply
         
         printfn $"Part 1 sum is {part1}"
