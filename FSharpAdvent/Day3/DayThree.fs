@@ -1,7 +1,7 @@
 module FSharpAdvent.DayThree.DayThree
 
     
-module DayTwo =
+module DayThree =
     let run =
         printfn "Day Three"
         

@@ -7,27 +7,27 @@
 
     <ItemGroup>
         <Compile Include="Util\InputProcessor.fs" />
-        <Compile Include="DayOne\LocationIdPairModule.fs" />
-        <Compile Include="DayOne\DayOne.fs" />
-        <AdditionalFiles Include="DayOne\1.input">
+        <Compile Include="Day1\LocationIdPairModule.fs" />
+        <Compile Include="Day1\DayOne.fs" />
+        <AdditionalFiles Include="Day1\1.input">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </AdditionalFiles>
-        <AdditionalFiles Include="DayOne\1.test">
+        <AdditionalFiles Include="Day1\1.test">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </AdditionalFiles>
-        <Compile Include="DayTwo\Report.fs" />
-        <Compile Include="DayTwo\DayTwo.fs" />
-        <AdditionalFiles Include="DayTwo\2.test">
+        <Compile Include="Day2\Report.fs" />
+        <Compile Include="Day2\DayTwo.fs" />
+        <AdditionalFiles Include="Day2\2.test">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </AdditionalFiles>
-        <AdditionalFiles Include="DayTwo\2.input">
+        <AdditionalFiles Include="Day2\2.input">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </AdditionalFiles>
-        <Compile Include="DayThree\DayThree.fs" />
-        <AdditionalFiles Include="DayThree\3.test">
+        <Compile Include="Day3\DayThree.fs" />
+        <AdditionalFiles Include="Day3\3.test">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </AdditionalFiles>
-        <AdditionalFiles Include="DayThree\3.input">
+        <AdditionalFiles Include="Day3\3.input">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </AdditionalFiles>
         <Compile Include="Program.fs" />
