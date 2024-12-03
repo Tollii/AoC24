@@ -1,4 +1,4 @@
-module FSharpAdvent.DayOne.DayOne
+module FSharpAdvent.Day1.DayOne
 
 open System.IO
 open System.Text.RegularExpressions
