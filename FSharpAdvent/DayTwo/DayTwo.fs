@@ -1,7 +1,7 @@
 module FSharpAdvent.DayTwo.DayTwo
 
-open FSharpAdvent.DayOne.InputProcessor
 open FSharpAdvent.DayTwo.ReportModule
+open FSharpAdvent.Util.InputProcessor
 
     
 module DayTwo =

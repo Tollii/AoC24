@@ -23,11 +23,17 @@
         <AdditionalFiles Include="DayTwo\2.input">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </AdditionalFiles>
+        <Compile Include="DayThree\DayThree.fs" />
+        <AdditionalFiles Include="DayThree\3.test">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </AdditionalFiles>
+        <AdditionalFiles Include="DayThree\3.input">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </AdditionalFiles>
         <Compile Include="Program.fs" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="bin\Debug\net9.0\" />
     </ItemGroup>
 
 </Project>

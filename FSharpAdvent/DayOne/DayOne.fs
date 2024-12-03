@@ -1,7 +1,7 @@
 module FSharpAdvent.DayOne.DayOne
 
 open FSharpAdvent.DayOne.LocationIdPairModule
-open InputProcessor.InputProcessor
+open FSharpAdvent.Util.InputProcessor.InputProcessor
 
 module DayOne =
     let run =

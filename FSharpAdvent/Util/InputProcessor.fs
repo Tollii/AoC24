@@ -1,4 +1,4 @@
-module FSharpAdvent.DayOne.InputProcessor
+module FSharpAdvent.Util.InputProcessor
 
 open System.IO
 open System.Text.RegularExpressions
