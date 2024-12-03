@@ -30,10 +30,8 @@
         <AdditionalFiles Include="Day3\3.input">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </AdditionalFiles>
+        <Content Include="Day3\3-2.test" />
         <Compile Include="Program.fs" />
-    </ItemGroup>
-
-    <ItemGroup>
     </ItemGroup>
 
 </Project>
