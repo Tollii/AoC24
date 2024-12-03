@@ -5,5 +5,5 @@ open FSharpAdvent.DayTwo.DayTwo
 printfn "Hello from F#"
 
 // DayOne.run
-// DayTwo.run
-DayThree.DayThree.run
+DayTwo.run
+// DayThree.DayThree.run

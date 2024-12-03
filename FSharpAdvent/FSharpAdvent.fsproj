@@ -6,8 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Util\InputProcessor.fs" />
-        <Compile Include="Day1\LocationIdPairModule.fs" />
         <Compile Include="Day1\DayOne.fs" />
         <AdditionalFiles Include="Day1\1.input">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -15,7 +13,6 @@
         <AdditionalFiles Include="Day1\1.test">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </AdditionalFiles>
-        <Compile Include="Day2\Report.fs" />
         <Compile Include="Day2\DayTwo.fs" />
         <AdditionalFiles Include="Day2\2.test">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -32,6 +29,10 @@
         </AdditionalFiles>
         <Content Include="Day3\3-2.test" />
         <Compile Include="Program.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="bin\Debug\net9.0\" />
     </ItemGroup>
 
 </Project>
