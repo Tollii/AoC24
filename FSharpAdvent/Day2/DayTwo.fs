@@ -7,9 +7,9 @@ open System.Text.RegularExpressions
 module DayTwo =
     
     let isSafe (levels: int list) =
-        if List.length levels < 2 then
-            true
-        else
+        match levels.Length with
+        | l when l < 2 -> true
+        | _ ->
             let diffs = List.pairwise levels |> List.map (fun (a, b) -> b - a)
             let isIncrementing = List.forall ((<) 0) diffs
             let isDecrementing = List.forall ((>) 0) diffs
