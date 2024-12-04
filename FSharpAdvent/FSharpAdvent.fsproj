@@ -38,4 +38,22 @@
         <Compile Include="Program.fs" />
     </ItemGroup>
 
+    <ItemGroup>
+      <AdditionalFiles Include="bin\Debug\net9.0\4.input">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </AdditionalFiles>
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="bin\Release\net9.0\3.input">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </AdditionalFiles>
+      <AdditionalFiles Include="bin\Release\net9.0\2.input">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </AdditionalFiles>
+      <AdditionalFiles Include="bin\Release\net9.0\1.input">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </AdditionalFiles>
+    </ItemGroup>
+
 </Project>
