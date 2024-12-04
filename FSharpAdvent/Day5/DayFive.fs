@@ -9,6 +9,6 @@ module DayFive =
         
         
         let input =
-            File.ReadLines "4.input"
+            File.ReadLines "5.input"
         
         printfn "Wow!"

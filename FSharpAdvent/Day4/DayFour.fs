@@ -16,28 +16,28 @@ module DayFour =
             ( 1,  1);  // Down right 
         ]
 
-        let isValidPosition (row, col) =
-            row >= 0 && row < numRows && col >= 0 && col < numCols
+        let getValidChar (row, col) (matrix: char [,]) =
+            if row >= 0 && row < numRows && col >= 0 && col < numCols
+            then Some matrix.[row, col] else None
+            
+        let applyDirections (row, col) (dirRow, dirCol) =
+            (row + dirRow, col + dirCol), (row - dirRow, col - dirCol)
 
         // Check if an arm forms "MAS" or "SAM"
-        let isValidArm (centerRow, centerCol) (deltaRow, deltaCol) =
-            let pos1 = (centerRow + deltaRow, centerCol + deltaCol) // Check left and right
-            let pos2 = (centerRow - deltaRow, centerCol - deltaCol) // CHeck up and down
-            if isValidPosition pos1 && isValidPosition pos2 then
-                let char1 = matrix.[fst pos1, snd pos1]
-                let char2 =  matrix.[fst pos2, snd pos2]
-                (char1 = 'M' && char2 = 'S') || (char1 = 'S' && char2 = 'M')
-            else
-                false
+        let isValidArm pos dir =
+            let pos1, pos2 = applyDirections pos dir
+            match getValidChar pos1 matrix, getValidChar pos2 matrix with
+            | Some 'M', Some 'S'
+            | Some 'S', Some 'M' -> true
+            | _ -> false
                 
         let allCoordinates =
             [ for row in 0 .. numRows - 1 do
                 for col in 0 .. numCols - 1 -> row, col ]
-        
 
         allCoordinates
         |> List.filter (fun (row, col) -> matrix.[row, col] = 'A')
-        |> List.filter (fun (row, col) -> directions |> List.forall (isValidArm (row, col)))
+        |> List.filter (fun pos -> directions |> List.forall (isValidArm pos))
         |> List.length
     
     let occurrencesInGrid (wordToFind: string) (grid: string array) =
@@ -58,7 +58,7 @@ module DayFour =
             ( 1,  1);  // Down-right
         ]
             
-        let getPositions row col dirRow dirCol =
+        let getPositions (row, col) (dirRow, dirCol) =
             [ for i in 0..wordLength - 1 -> row + i * dirRow, col + i * dirCol ]
             
         let isValidPosition (row, col) =
@@ -69,14 +69,14 @@ module DayFour =
             && positions |> List.mapi (fun idx (r, c) -> matrix.[r, c] = wordVector.[idx])
                          |> List.forall id
 
-        let countOccurrencesAt row col =
+        let countOccurrencesAt pos =
             directions
-            |> List.sumBy (fun (dirRow, dirCol) ->
-                if wordMatches (getPositions row col dirRow dirCol) then 1 else 0
+            |> List.sumBy (fun dir ->
+                if wordMatches (getPositions pos dir) then 1 else 0
             )
 
         [ for row in 0..numRows - 1 do
-            for col in 0..numCols - 1 -> countOccurrencesAt row col ]
+            for col in 0..numCols - 1 -> countOccurrencesAt (row, col) ]
         |> List.sum
     
     let run =
