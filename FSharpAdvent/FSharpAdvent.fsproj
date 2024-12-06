@@ -44,4 +44,14 @@
         </AdditionalFiles>
         <Compile Include="Program.fs" />
     </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="bin\Debug\net9.0\5.test">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </AdditionalFiles>
+      <AdditionalFiles Include="bin\Debug\net9.0\5.input">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </AdditionalFiles>
+      <Folder Include="bin\Release\net9.0\" />
+    </ItemGroup>
 </Project>
