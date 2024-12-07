@@ -23,35 +23,34 @@ module DayFive =
         |> List.map List.ofArray
         |> List.map (List.map int)
         
-    let isUpdateValid (rules: (int * int) list) (update: int list)=
-        let pageIndexMap = update |> List.mapi (fun idx page -> page, idx) |> Map.ofList
+    let isUpdateValid (rules: (int * int) list) (update: int list) =
+        let comesBefore x y =
+            match List.tryFindIndex ((=) x) update, List.tryFindIndex ((=) y) update with
+            | Some xIdx, Some yIdx -> xIdx < yIdx
+            | _ -> true
         
         rules
-        |> List.forall (fun (x, y) ->
-            if Map.containsKey x pageIndexMap && Map.containsKey y pageIndexMap then
-                pageIndexMap.[x] < pageIndexMap.[y]
-            else
-                true) 
+        |> List.forall (fun (x,y) -> comesBefore x y)
         
     let middlePage (update: int list) = update.[(update.Length - 1) / 2]
-    
+
     let run =
         printfn "Day Five"
         
-        let input = File.ReadLines "5.input" |> List.ofSeq
-        
+        let input = File.ReadLines "5.input"
+                    |> List.ofSeq
+
         let rules = getRules input
         let updates = getChanges input
         
         let (validUpdates, invalidUpdates) =
-            updates
-            |> List.partition (isUpdateValid rules)
+            updates |>
+            List.partition (isUpdateValid rules)
         
         let validMiddlePages =
             validUpdates
             |> List.map middlePage
-            
+
         let validSum = List.sum validMiddlePages
         
         printfn $"Sum of middle pages: {validSum}"
-                    
